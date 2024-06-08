@@ -10,11 +10,11 @@ public class Autor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String autores;
+    private String nome; // Corrigindo o nome do campo de 'autores' para 'nome'
 
-    private int anoNascimento;
+    private Integer anoNascimento;
 
-    private int anoMorte;
+    private Integer anoMorte;
 
     public Long getId() {
         return id;
@@ -24,27 +24,27 @@ public class Autor {
         this.id = id;
     }
 
-    public String getAutores() {
-        return autores;
+    public String getNome() {
+        return nome;
     }
 
-    public void setAutores(String autores) {
-        this.autores = autores;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public int getAnoNascimento() {
+    public Integer getAnoNascimento() {
         return anoNascimento;
     }
 
-    public void setAnoNascimento(int anoNascimento) {
+    public void setAnoNascimento(Integer anoNascimento) {
         this.anoNascimento = anoNascimento;
     }
 
-    public int getAnoMorte() {
+    public Integer getAnoMorte() {
         return anoMorte;
     }
 
-    public void setAnoMorte(int anoMorte) {
+    public void setAnoMorte(Integer anoMorte) {
         this.anoMorte = anoMorte;
     }
 }

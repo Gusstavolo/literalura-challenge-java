@@ -14,11 +14,11 @@ public class Livro {
 
     @ManyToOne
     @JoinColumn(name = "autor_id")
-    private Autor autores;
+    private Autor autor; // Corrigindo a relação para `ManyToOne` e o campo para `autor`
 
     private String idioma;
 
-    private Double numeroDawnloads;
+    private Double numeroDownloads; // Corrigindo o nome do campo para `numeroDownloads`
 
     public Long getId() {
         return id;
@@ -36,12 +36,12 @@ public class Livro {
         this.titulo = titulo;
     }
 
-    public Autor getAutores() {
-        return autores;
+    public Autor getAutor() {
+        return autor;
     }
 
-    public void setAutores(Autor autores) {
-        this.autores = autores;
+    public void setAutor(Autor autor) {
+        this.autor = autor;
     }
 
     public String getIdioma() {
@@ -52,11 +52,11 @@ public class Livro {
         this.idioma = idioma;
     }
 
-    public Double getNumeroDawnloads() {
-        return numeroDawnloads;
+    public Double getNumeroDownloads() {
+        return numeroDownloads;
     }
 
-    public void setNumeroDawnloads(Double numeroDawnloads) {
-        this.numeroDawnloads = numeroDawnloads;
+    public void setNumeroDownloads(Double numeroDownloads) {
+        this.numeroDownloads = numeroDownloads;
     }
 }
