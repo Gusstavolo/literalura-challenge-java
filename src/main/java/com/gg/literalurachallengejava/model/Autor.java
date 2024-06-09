@@ -88,12 +88,11 @@ public class Autor {
         String livrosStr = livros.stream()
                 .map(Livro::getTitulo)
                 .collect(Collectors.joining(", "));
-        return "Autor{" +
-                "id=" + id +
+        return
                 ", autor='" + autor + '\'' +
                 ", anoNascimento=" + anoNascimento +
                 ", anoFalecimento=" + anoFalecimento +
-                ", livros=" + livrosStr +
-                '}';
+                ", livros=" + livrosStr
+               ;
     }
 }

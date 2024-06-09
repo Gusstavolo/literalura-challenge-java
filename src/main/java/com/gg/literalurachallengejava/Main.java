@@ -1,6 +1,7 @@
 package com.gg.literalurachallengejava;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -18,10 +19,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class Main implements CommandLineRunner {
 
-    // Remove the uninitialized scanner
-    // private Scanner scanner;
-
-    // Use this scanner instance throughout the class
     private final Scanner LER = new Scanner(System.in);
     private final ApiClient CONSUMO_API = new ApiClient();
     private final ApiConvert CONVERTEDADOS = new ApiConvert();
@@ -68,7 +65,7 @@ public class Main implements CommandLineRunner {
                     listarAutoresVivosEmUmDeterminadoAno();
                     break;
                 case 5:
-                    listarAutoresVivosEmUmDeterminadoIdioma();
+                    listarLivrosEmUmDeterminadoIdioma();
                     break;
                 case 0:
                     System.out.println("Saindo do programa. Até logo!");
@@ -97,18 +94,42 @@ public class Main implements CommandLineRunner {
     }
 
     private void listarLivrosRegistrados() {
-        ClassDTO dados = getDados();
-        List<LivroDTO> livroDTOS = dados.livroDTO();
+        List<Livro> livros = livroRepository.findAll();
+        livros.forEach(System.out::println);
 
     }
     private void listarAutoresRegistrados(){
+        List<Autor> autores = autorRepository.findAll();
+        autores.forEach(System.out::println);
 
     }
     private void  listarAutoresVivosEmUmDeterminadoAno(){
+        try {
+            List<Autor> autores = autorRepository.findAll();
+            autores.forEach(System.out::println);
+
+            System.out.println("Digite o ano: ");
+            Integer ano = LER.nextInt();
+            LER.nextLine();
+
+            List<Autor> listaAutoresAno = autorRepository.procuraAutoresAno(ano);
+            listaAutoresAno.forEach(System.out::println);
+        } catch (InputMismatchException e) {
+            System.out.println("Entrada inválida, digite um ano válido.");;
+            LER.nextLine();
+        }
 
     }
-    private void listarAutoresVivosEmUmDeterminadoIdioma(){
+    private void listarLivrosEmUmDeterminadoIdioma(){
+        System.out.println("""
+            Escolha um idioma para filtrar:
+            en. Inglês
+            pt. Português
+            """);
+        var idiomaEscolha = LER.nextLine();
 
+        List<Livro> livrosIdioma = livroRepository.findByIdioma(idiomaEscolha);
+        livrosIdioma.forEach(System.out::println);
     }
 
     private ClassDTO getDados() {

@@ -24,7 +24,7 @@ public class Livro {
     }
 
     public Livro(LivroDTO livroDTO) {
-        this.id = livroDTO.id();
+
         this.titulo = livroDTO.titulo();
         this.idioma = livroDTO.idioma().get(0);
         this.totalDownloads = livroDTO.numeroDownload();
@@ -73,7 +73,7 @@ public class Livro {
     @Override
     public String toString() {
         return
-                "\nid: " + id + '\n' +
+
                         "titulo: '" + titulo + '\'' + '\n' +
                         "idioma: " + idioma + '\n' +
                         "totalDownloads: " + totalDownloads + '\n' +
